@@ -64,7 +64,6 @@ def playerWins():
 	print('You\'re out. Yay. Presumably you found the massive hole in the floor?')
 	playAgain = input("Play Again? 'y' or 'n'")
 	if playAgain == 'y':
-		global exitLoc
 		exitLoc = getExit()
 		room1(exitLoc)
 	if playAgain == 'n':
