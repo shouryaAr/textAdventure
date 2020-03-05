@@ -14,7 +14,7 @@ Objective: Collect 10 coins
 
 ***
 
-10 rooms
+3 rooms
 1 contains exit
 Player must find exit
 
@@ -22,21 +22,8 @@ Player must find exit
 1) Create room object
 2) Create player object
 3) Assign exit to a room 
- 
-***
-
-
-
-10 rooms
-5 coins
-Move from room to room
-Some rooms contain a coin
-No room contains >1 coin
--Building layout
-
 
 ***
-
 
 The following links might help:
 
@@ -77,11 +64,13 @@ def playerWins():
 	print('You\'re out. Yay. Presumably you found the massive hole in the floor?')
 	playAgain = input("Play Again? 'y' or 'n'")
 	if playAgain == 'y':
+		global exitLoc
 		exitLoc = getExit()
 		room1(exitLoc)
 	if playAgain == 'n':
 		print("Scared, huh? Obviously you hate puzzles with as many as 3 pieces. Let\'s see how you handle my fiendish two piece rubix cube...anyhow, see ya.")
 		sys.exit()
+	return exitLoc
 
 
 
