@@ -56,17 +56,16 @@ checkDoor = [value for key, value in dict_door.items() if playerMove in key.lowe
 import random
 import sys
 
-def getExit():
-	exitNum = random.randint(2,3)
-	return exitNum
+def generateNewExit():
+	thisRoomIsExit = random.randint(2,3)
+	return thisRoomIsExit
 	
 def playerWins():
 	print('You\'re out. Yay. Presumably you found the massive hole in the floor?')
 	playAgain = input("Play Again? 'y' or 'n'")
 	if playAgain == 'y':
-		global exitLoc
-		exitLoc = getExit()
-		room1(exitLoc)
+		thisRoomIsExit = generateNewExit()
+		room1(thisRoomIsExit)
 	if playAgain == 'n':
 		print("Scared, huh? Obviously you hate puzzles with as many as 3 pieces. Let\'s see how you handle my fiendish two piece rubix cube...anyhow, see ya.")
 		sys.exit()
@@ -84,9 +83,9 @@ def playerWins():
 ############ ROOM DEFINITIONS BELOW ##########
 
 def room1(exitLocation):
-	roomNum = 1
+	roomNumber = 1
 
-	if exitLocation == roomNum: #checks if player has found exit
+	if exitLocation == roomNumber: #checks if player has found exit
 		playerWins()
 
 	dict_doors = {       
@@ -109,15 +108,15 @@ def room1(exitLocation):
 		#print('The value is True.')
 		if playerMove == 'n':
 			print('You move into Room 2.')
-			room2(exitLoc)
+			room2(exitLocation)
 	elif checkDoor == False:
 		#print('The value is False.')
 		print('This door is locked.')
-		room1(exitLoc)
+		room1(exitLocation)
 	else:								#if the player did not enter n,s,w or e. In which case checkDoor should contain an empty list.  
 		#print('The value of this variable is neither True nor False.')
 		print('um, sense much? You need to enter n,s,w or e.')
-		room1(exitLoc)
+		room1(exitLocation)
 		
 
 		
@@ -148,19 +147,19 @@ def room2(exitLocation):
 		#print('The value is True.')
 		if playerMove == 'n':
 			print('You move into Room 3.')
-			room3(exitLoc)
+			room3(exitLocation)
 		if playerMove == 's':
 			print('You move into Room 1.')
-			room1(exitLoc)
+			room1(exitLocation)
 		
 	elif checkDoor == False:
 		#print('The value is False.')
 		print('This door is locked.')
-		room2(exitLoc)
+		room2(exitLocation)
 	else:								#if the player did not enter n,s,w or e. In which case checkDoor should contain an empty list.  
 		#print('The value of this variable is neither True nor False.')
 		print('um, sense much? You need to enter n,s,w or e.')
-		room2(exitLoc)
+		room2(exitLocation)
 
 
 
@@ -197,20 +196,20 @@ def room3(exitLocation):
 	elif checkDoor == False:
 		#print('The value is False.')
 		print('This door is locked.')
-		room3(exitLoc)
+		room3(exitLocation)
 	else:								#if the player did not enter n,s,w or e. In which case checkDoor should contain an empty list.  
 		#print('The value of this variable is neither True nor False.')
 		print('um, sense much? You need to enter n,s,w or e.')
-		room3(exitLoc)
+		room3(exitLocation)
 
 
 
 ##################
     
          
-exitLoc = getExit()          
+exitLocation = generateNewExit()          
 
-room1(exitLoc)   
+room1(exitLocation)   
 
 
 
